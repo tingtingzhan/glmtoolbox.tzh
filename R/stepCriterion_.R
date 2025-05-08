@@ -1,13 +1,15 @@
 
-#' @title \link[glmtoolbox]{stepCriterion} with returned class
+#' @title [backwardCriterion]
 #' 
-#' @param model,... see function \link[glmtoolbox]{stepCriterion}
+#' @param model,... parameters of function \link[glmtoolbox]{stepCriterion},
+#' **other than `direction`**
 #' 
 #' @importFrom glmtoolbox stepCriterion
 #' @export
-stepCriterion_ <- function(model, ...) {
-  ret <- stepCriterion(model, ...)
-  class(ret) <- 'stepCriterion'
+backwardCriterion <- function(model, ...) {
+  ret <- stepCriterion(model, direction = 'backward', ...)
+  attr(ret, which = 'initial.fit') <- model
+  class(ret) <- 'backwardCriterion'
   return(ret)
 }
 

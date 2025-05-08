@@ -2,12 +2,12 @@
 
 S3method(family,glmgee)
 export(.pval.glmgee)
+export(backwardCriterion)
 export(coef_.glmgee)
 export(confint_.glmgee)
 export(desc_.glmgee)
 export(family.glmgee)
 export(nobsText.glmgee)
-export(stepCriterion_)
 importFrom(glmtoolbox,stepCriterion)
 importFrom(stats,confint)
 importFrom(stats,family)
