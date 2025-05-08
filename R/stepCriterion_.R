@@ -14,3 +14,17 @@ backwardCriterion <- function(model, ...) {
 }
 
 
+
+#' @title [textCriterion]
+#' 
+#' @param x returned object from function \link[glmtoolbox]{stepCriterion}
+#' 
+#' @keywords internal
+#' @export
+textCriterion <- function(x) {
+  switch(
+    EXPR = x$criterion, # ?stepCriterion.glmgee
+    'P(Chisq>)(*)' = '$p$-values of selected predictors',
+    AGPC = 'Akaike-type penalized Gaussian pseudo-likelihood criterion'
+  )
+}
