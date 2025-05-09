@@ -1,13 +1,13 @@
 
 #' @title [backwardCriterion]
 #' 
-#' @param model,... parameters of function \link[glmtoolbox]{stepCriterion},
+#' @param model,trace,... parameters of function \link[glmtoolbox]{stepCriterion},
 #' **other than `direction`**
 #' 
 #' @importFrom glmtoolbox stepCriterion
 #' @export
-backwardCriterion <- function(model, ...) {
-  ret <- stepCriterion(model, direction = 'backward', ...)
+backwardCriterion <- function(model, trace = FALSE, ...) {
+  ret <- stepCriterion(model, direction = 'backward', trace = trace, ...)
   attr(ret, which = 'initial.fit') <- model
   class(ret) <- 'backwardCriterion'
   return(ret)
@@ -23,8 +23,22 @@ backwardCriterion <- function(model, ...) {
 #' @export
 textCriterion <- function(x) {
   switch(
-    EXPR = x$criterion, # ?stepCriterion.glmgee
-    'P(Chisq>)(*)' = '$p$-values of selected predictors',
-    AGPC = 'Akaike-type penalized Gaussian pseudo-likelihood criterion'
+    EXPR = x$criterion, 
+    # ?stepCriterion.glmgee
+    'P(Chisq>)(*)' = '$p$-values of selected predictors', # `criterion = 'p-value'`
+    QIC = 'quasilikelihood under the independence model criterion', # `criterion = 'qic'`
+    QICu = 'approximated and simplified quasilikelihood under the independence model criterion', # `criterion = 'qicu'`
+    AGPC = 'Akaike-type penalized Gaussian pseudo-likelihood criterion', # `criterion = 'agpc'`
+    SGPC = 'Schwarz-type penalized Gaussian pseudo-likelihood criterion', # `criterion = 'sgpc'`
+    # additional options in ?stepCriterion.glm
+    AIC = 'Akaike information criterion', # `criterion = 'aic'`
+    BIC = 'Bayesian information criterion', # `criterion = 'bic'`
+    'adj.R-squared' = 'Adjusted $R^2$', # `criterion = 'adjr2'`
+    # additional options in ?stepCriterion.lm
+    'prd.R-squared' = 'predicted $R^2$', # `criterion = 'prdr2'`,
+    'Mallows\' CP' = '[Mallows\' $C_p$](https://en.wikipedia.org/wiki/Mallows%27s_Cp)', # `criterion = 'cp'`,
+    # additional options in ?stepCriterion.overglm
+    # [none]
+    stop('write some more')
   )
 }

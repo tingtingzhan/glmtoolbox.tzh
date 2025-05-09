@@ -4,10 +4,10 @@
 \alias{backwardCriterion}
 \title{\link{backwardCriterion}}
 \usage{
-backwardCriterion(model, ...)
+backwardCriterion(model, trace = FALSE, ...)
 }
 \arguments{
-\item{model, ...}{parameters of function \link[glmtoolbox]{stepCriterion},
+\item{model, trace, ...}{parameters of function \link[glmtoolbox]{stepCriterion},
 \strong{other than \code{direction}}}
 }
 \description{
