@@ -40,5 +40,5 @@ textCriterion <- function(x) {
     # additional options in ?stepCriterion.overglm
     # [none]
     stop('write some more')
-  )
+  ) # all tested good with \pkg{rmarkdown}
 }
