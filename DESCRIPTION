@@ -15,8 +15,5 @@ Encoding: UTF-8
 License: GPL-2
 Depends: R (>= 4.5)
 Imports: glmtoolbox (== 0.1.12)
-Suggests: 
-    knitr,
-    quarto,
-    rmarkdown
+Suggests: knitr, quarto, rmarkdown
 VignetteBuilder: quarto
