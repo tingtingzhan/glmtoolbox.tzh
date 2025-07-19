@@ -4,6 +4,7 @@
 #' @param model,trace,... parameters of function \link[glmtoolbox]{stepCriterion},
 #' **other than `direction`**
 #' 
+#' @keywords internal
 #' @importFrom glmtoolbox stepCriterion
 #' @export
 backwardCriterion <- function(model, trace = FALSE, ...) {

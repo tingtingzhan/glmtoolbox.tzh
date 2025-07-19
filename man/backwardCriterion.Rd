@@ -13,3 +13,4 @@ backwardCriterion(model, trace = FALSE, ...)
 \description{
 \link{backwardCriterion}
 }
+\keyword{internal}
