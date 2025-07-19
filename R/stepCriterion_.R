@@ -24,9 +24,15 @@ backwardCriterion <- function(model, trace = FALSE, ...) {
 textCriterion <- function(x) {
   switch(
     EXPR = x$criterion, 
-    # ?stepCriterion.glmgee
-    'P(Chisq>)(*)' = '$p$-values of selected predictors', # `criterion = 'p-value'`
-    QIC = 'quasilikelihood under the independence model criterion', # `criterion = 'qic'`
+    # ?glmtoolbox:::stepCriterion.glmgee
+    'P(Chisq>)(*)' = {
+      # `criterion = 'p-value'`
+      '$p$-values of selected predictors'
+    }, 
+    QIC = {
+      # `criterion = 'qic'`
+      'quasilikelihood under the independence model criterion'
+    },
     QICu = 'approximated and simplified quasilikelihood under the independence model criterion', # `criterion = 'qicu'`
     AGPC = 'Akaike-type penalized Gaussian pseudo-likelihood criterion', # `criterion = 'agpc'`
     SGPC = 'Schwarz-type penalized Gaussian pseudo-likelihood criterion', # `criterion = 'sgpc'`
