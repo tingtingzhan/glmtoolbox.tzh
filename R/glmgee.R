@@ -24,13 +24,18 @@ family.glmgee <- function(object, ...) object[['family']]
 #' 
 #' @param ... ..
 #' 
+#' @keywords internal
 #' @name glmgee_S3
+#' @importFrom ecip coef_
+#' @export coef_.glmgee
 #' @export
 coef_.glmgee <- function(x) x$coefficients[,1L]
 # do not overwrite glmtoolbox:::coef.glmgee
 
 #' @rdname glmgee_S3
 #' @importFrom stats pnorm vcov
+#' @importFrom ecip .pval
+#' @export .pval.glmgee
 #' @export
 .pval.glmgee <- function(x) {
   # see inside
@@ -44,6 +49,8 @@ coef_.glmgee <- function(x) x$coefficients[,1L]
 
 #' @rdname glmgee_S3
 #' @importFrom stats confint
+#' @importFrom ecip confint_
+#' @export confint_.glmgee
 #' @export
 confint_.glmgee <- function(x, level = .95, ...) {
   # ?glmtoolbox:::confint.glmgee
@@ -55,6 +62,8 @@ confint_.glmgee <- function(x, level = .95, ...) {
 
 
 #' @rdname glmgee_S3
+#' @importFrom ecip nobsText
+#' @export nobsText.glmgee
 #' @export
 nobsText.glmgee <- function(x) {
   sz <- x[['sizes']]
@@ -69,6 +78,8 @@ nobsText.glmgee <- function(x) {
 #' @importFrom methods new
 #' @importFrom utils bibentry
 #' @importClassesFrom rmd.tzh md_lines
+#' @importFrom ecip desc_
+#' @export desc_.glmgee
 #' @export
 desc_.glmgee <- function(x, ...) {
   'generalized estimating equations [GEE, @Liang86]' |> 
@@ -85,5 +96,24 @@ desc_.glmgee <- function(x, ...) {
       doi = '10.1093/biomet/73.1.13'
     ))
 }
+
+
+
+
+#' @title R Markdown Lines for \link[glmtoolbox]{glmgee} Object
+#' 
+#' @param x,xnm,... ..
+#' 
+#' @examples
+#' library(rmd.tzh); library(ecip); list(
+#'  '`glmgee`' = glmgee(breaks ~ tension, id = wool, data = warpbreaks, corstr = 'exchangeable')
+#' ) |> render_(file = 'glmgee')
+#' 
+#' @keywords internal
+#' @importFrom rmd.tzh md_
+#' @importFrom ecip md_ecip
+#' @export md_.glmgee
+#' @export
+md_.glmgee <- md_ecip
 
 

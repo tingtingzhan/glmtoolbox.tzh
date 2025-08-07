@@ -8,7 +8,8 @@
 #' @importFrom glmtoolbox stepCriterion
 #' @export
 backwardCriterion <- function(model, trace = FALSE, ...) {
-  ret <- stepCriterion(model, direction = 'backward', trace = trace, ...)
+  ret <- model |>
+    stepCriterion(direction = 'backward', trace = trace, ...)
   attr(ret, which = 'initial.fit') <- model
   class(ret) <- 'backwardCriterion'
   return(ret)
@@ -49,3 +50,112 @@ textCriterion <- function(x) {
     stop('write some more')
   ) # all tested good with \pkg{rmarkdown}
 }
+
+
+
+
+
+
+#' @title Convert \link[glmtoolbox.tzh]{backwardCriterion} to \link[base]{matrix}
+#' 
+#' @param x returned object from function \link[glmtoolbox.tzh]{backwardCriterion}.
+#' 
+#' @param ... additional parameters, currently of no use
+#' 
+#' @keywords internal
+#' @importFrom ecip ecip as.matrix.ecip endpoint
+#' @method as.matrix backwardCriterion
+#' @export as.matrix.backwardCriterion
+#' @export
+as.matrix.backwardCriterion <- function(x, ...) {
+  
+  # '\u274c' # unicode 'Cross Mark'
+  # '\U1f6ab' # unicode 'No Entry Sign'
+  
+  z <- list(
+    x |> attr(which = 'initial.fit', exact = TRUE),
+    x$final.fit
+  ) |> 
+    lapply(FUN = ecip)
+  
+  m <- list(
+    z[[1L]] |> as.matrix.ecip(type = 'p_only'), # `initial` model, only print p-values
+    z[[2L]] |> as.matrix.ecip(type = 'ncol1') # `final` model
+  )
+  
+  r <- m |>
+    lapply(FUN = rownames) |>
+    unlist(use.names = FALSE) |>
+    unique.default() # do *not* ?base::sort !!!
+  
+  out <- array(data = '\u274c', dim = c(length(r), 2L), dimnames = list(
+    r, 
+    paste(c('(Initial)', '(Final)'), vapply(m, FUN = colnames, FUN.VALUE = ''), sep = '\n')
+  ))
+  for (i in 1:2) {
+    out[match(x = rownames(m[[i]]), table = r), i] <- m[[i]]
+  }
+  
+  attr(out, which = 'row.title') <- x$final.fit |> 
+    endpoint() |> 
+    deparse1()
+  return(out)
+  
+}
+
+
+
+#' @title Convert \link[glmtoolbox.tzh]{backwardCriterion} to \link[flextable]{flextable}
+#' 
+#' @param x returned object from function \link[glmtoolbox.tzh]{backwardCriterion}.
+#' 
+#' @param ... additional parameters, currently of no use
+#' 
+#' @keywords internal
+#' @importFrom flextable as_flextable add_footer_lines color
+#' @importFrom flextable.tzh as_flextable.matrix
+#' @export as_flextable.backwardCriterion
+#' @export
+as_flextable.backwardCriterion <- function(
+    x, 
+    row.title = z |> attr(which = 'row.title', exact = TRUE),
+    ...
+) {
+  z <- as.matrix.backwardCriterion(x, ...)
+  z |>
+    as_flextable.matrix(
+      row.title = row.title,
+    ) |>
+    color(j = 2L, color = 'grey60', part = 'all') |>
+    add_footer_lines(values = c(
+      x |> textCriterion() |> sprintf(fmt = '\u274c: predictor(s) removed by %s')
+    ))
+}
+
+
+
+#' @title [Sprintf.backwardCriterion()]
+#' 
+#' @param x ..
+#' 
+#' @keywords internal
+#' @importFrom ecip Sprintf Sprintf.default
+#' @export Sprintf.backwardCriterion
+#' @export
+Sprintf.backwardCriterion <- function(x) {
+  
+  z1 <- x |>
+    attr(which = 'initial.fit', exact = TRUE) |>
+    Sprintf.default()
+  
+  z2 <- sprintf(fmt = 'Backward stepwise variable selection is performed by %s.', textCriterion(x)) |>
+    new(Class = 'md_lines')
+  # keep attr intact
+  
+  c(z1, z2) # ?rmd.tzh::c.md_lines
+  
+}
+
+
+
+

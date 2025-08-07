@@ -9,15 +9,15 @@
 \alias{desc_.glmgee}
 \title{Auxiliary S3 method dispatch for \link[glmtoolbox]{glmgee} objects}
 \usage{
-coef_.glmgee(x)
+\method{coef_}{glmgee}(x)
 
-.pval.glmgee(x)
+\method{.pval}{glmgee}(x)
 
-confint_.glmgee(x, level = 0.95, ...)
+\method{confint_}{glmgee}(x, level = 0.95, ...)
 
-nobsText.glmgee(x)
+\method{nobsText}{glmgee}(x)
 
-desc_.glmgee(x, ...)
+\method{desc_}{glmgee}(x, ...)
 }
 \arguments{
 \item{x}{\link[glmtoolbox]{glmgee} object}
@@ -29,3 +29,4 @@ desc_.glmgee(x, ...)
 \description{
 Auxiliary S3 method dispatch for \link[glmtoolbox]{glmgee} objects
 }
+\keyword{internal}
