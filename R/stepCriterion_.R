@@ -134,28 +134,37 @@ as_flextable.backwardCriterion <- function(
 
 
 
-#' @title [Sprintf.backwardCriterion()]
+#' @title R Markdown Lines for [backwardCriterion]
 #' 
-#' @param x ..
+#' @param x,xnm,... ..
 #' 
 #' @keywords internal
-#' @importFrom ecip Sprintf Sprintf.default
-#' @export Sprintf.backwardCriterion
+#' @importFrom rmd.tzh md_
+#' @importClassesFrom rmd.tzh md_lines
+#' @importFrom ecip Sprintf.default
+#' @export md_.backwardCriterion
 #' @export
-Sprintf.backwardCriterion <- function(x) {
+md_.backwardCriterion <- function(x, xnm, ...) {
   
   z1 <- x |>
     attr(which = 'initial.fit', exact = TRUE) |>
-    Sprintf.default()
-  
-  z2 <- sprintf(fmt = 'Backward stepwise variable selection is performed by %s.', textCriterion(x)) |>
+    Sprintf.default() |>
     new(Class = 'md_lines')
-  # keep attr intact
   
-  c(z1, z2) # ?rmd.tzh::c.md_lines
+  z2 <- x |>
+    textCriterion() |> 
+    sprintf(fmt = 'Backward stepwise variable selection is performed by %s.') |>
+    new(Class = 'md_lines')
+  
+  z3 <- c(
+    '```{r}', 
+    '#| echo: false', 
+    xnm |> sprintf(fmt = 'as_flextable(%s)'),
+    '```'
+  ) |>
+    new(Class = 'md_lines')
+  
+  c(z1, z2, z3) # ?rmd.tzh::c.md_lines
   
 }
-
-
-
 

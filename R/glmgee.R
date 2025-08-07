@@ -105,9 +105,9 @@ desc_.glmgee <- function(x, ...) {
 #' @param x,xnm,... ..
 #' 
 #' @examples
-#' library(rmd.tzh); library(ecip); list(
+#' library(ecip); list(
 #'  '`glmgee`' = glmgee(breaks ~ tension, id = wool, data = warpbreaks, corstr = 'exchangeable')
-#' ) |> render_(file = 'glmgee')
+#' ) |> rmd.tzh::render_(file = 'glmgee')
 #' 
 #' @keywords internal
 #' @importFrom rmd.tzh md_
