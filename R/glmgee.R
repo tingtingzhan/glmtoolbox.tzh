@@ -27,10 +27,15 @@ family.glmgee <- function(object, ...) object[['family']]
 #' @keywords internal
 #' @name glmgee_S3
 #' @importFrom ecip coef_
+#' @importFrom stats setNames
 #' @export coef_.glmgee
 #' @export
-coef_.glmgee <- function(x) x$coefficients[,1L]
-# do not overwrite glmtoolbox:::coef.glmgee
+coef_.glmgee <- function(x) {
+  # x$coefficients[, 1L] # drop rownames if ncol-1L
+  # x$coefficients[, 1L, drop = FALSE] # wont help either ..
+  setNames(c(x$coefficients), nm = rownames(x$coefficients))
+}
+# do not overwrite ?glmtoolbox:::coef.glmgee
 
 #' @rdname glmgee_S3
 #' @importFrom stats pnorm vcov
