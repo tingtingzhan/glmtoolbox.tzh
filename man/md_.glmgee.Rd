@@ -15,7 +15,7 @@ R Markdown Lines for \link[glmtoolbox]{glmgee} Object
 \examples{
 library(ecip); list(
  '`glmgee`' = glmgee(breaks ~ tension, id = wool, data = warpbreaks, corstr = 'exchangeable')
-) |> rmd.tzh::render_(file = 'glmgee')
+) |> fastmd::render_(file = 'glmgee')
 
 }
 \keyword{internal}

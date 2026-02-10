@@ -82,7 +82,7 @@ nobsText.glmgee <- function(x) {
 #' @rdname glmgee_S3
 #' @importFrom methods new
 #' @importFrom utils bibentry
-#' @importClassesFrom rmd.tzh md_lines
+#' @importClassesFrom fastmd md_lines
 #' @importFrom ecip desc_
 #' @export desc_.glmgee
 #' @export
@@ -112,10 +112,10 @@ desc_.glmgee <- function(x, ...) {
 #' @examples
 #' library(ecip); list(
 #'  '`glmgee`' = glmgee(breaks ~ tension, id = wool, data = warpbreaks, corstr = 'exchangeable')
-#' ) |> rmd.tzh::render_(file = 'glmgee')
+#' ) |> fastmd::render_(file = 'glmgee')
 #' 
 #' @keywords internal
-#' @importFrom rmd.tzh md_
+#' @importFrom fastmd md_
 #' @importFrom ecip md_ecip
 #' @export md_.glmgee
 #' @export

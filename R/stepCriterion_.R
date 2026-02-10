@@ -113,7 +113,7 @@ as.matrix.backwardCriterion <- function(x, ...) {
 #' 
 #' @keywords internal
 #' @importFrom flextable as_flextable add_footer_lines color
-#' @importFrom flextable.tzh as_flextable.matrix
+#' @importFrom fastmd as_flextable.matrix
 #' @export as_flextable.backwardCriterion
 #' @export
 as_flextable.backwardCriterion <- function(
@@ -139,8 +139,8 @@ as_flextable.backwardCriterion <- function(
 #' @param x,xnm,... ..
 #' 
 #' @keywords internal
-#' @importFrom rmd.tzh md_
-#' @importClassesFrom rmd.tzh md_lines
+#' @importFrom fastmd md_
+#' @importClassesFrom fastmd md_lines
 #' @importFrom ecip Sprintf.default
 #' @export md_.backwardCriterion
 #' @export
@@ -164,7 +164,7 @@ md_.backwardCriterion <- function(x, xnm, ...) {
   ) |>
     new(Class = 'md_lines')
   
-  c(z1, z2, z3) # ?rmd.tzh::c.md_lines
+  c(z1, z2, z3) # ?fastmd::c.md_lines
   
 }
 
