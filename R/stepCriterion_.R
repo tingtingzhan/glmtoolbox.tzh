@@ -141,14 +141,14 @@ as_flextable.backwardCriterion <- function(
 #' @keywords internal
 #' @importFrom fastmd md_
 #' @importClassesFrom fastmd md_lines
-#' @importFrom ecip Sprintf.default
+#' @importFrom ecip .md_reg
 #' @export md_.backwardCriterion
 #' @export
 md_.backwardCriterion <- function(x, xnm, ...) {
   
   z1 <- x |>
     attr(which = 'initial.fit', exact = TRUE) |>
-    Sprintf.default() |>
+    .md_reg() |>
     new(Class = 'md_lines')
   
   z2 <- x |>

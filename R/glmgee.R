@@ -6,7 +6,6 @@
 #' 
 #' @param ... S3 method dispatch holder
 #' 
-#' @importFrom stats family
 #' @export family.glmgee
 #' @export
 family.glmgee <- function(object, ...) object[['family']]
@@ -27,7 +26,6 @@ family.glmgee <- function(object, ...) object[['family']]
 #' @keywords internal
 #' @name glmgee_S3
 #' @importFrom ecip coef_
-#' @importFrom stats setNames
 #' @export coef_.glmgee
 #' @export
 coef_.glmgee <- function(x) {
@@ -38,7 +36,6 @@ coef_.glmgee <- function(x) {
 # do not overwrite ?glmtoolbox:::coef.glmgee
 
 #' @rdname glmgee_S3
-#' @importFrom stats pnorm vcov
 #' @importFrom ecip .pval
 #' @export .pval.glmgee
 #' @export
@@ -53,7 +50,6 @@ coef_.glmgee <- function(x) {
 
 
 #' @rdname glmgee_S3
-#' @importFrom stats confint
 #' @importFrom ecip confint_
 #' @export confint_.glmgee
 #' @export
