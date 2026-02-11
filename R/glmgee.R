@@ -77,25 +77,13 @@ nobsText.glmgee <- function(x) {
 
 #' @rdname glmgee_S3
 #' @importFrom methods new
-#' @importFrom utils bibentry
 #' @importClassesFrom fastmd md_lines
 #' @importFrom ecip desc_
 #' @export desc_.glmgee
 #' @export
 desc_.glmgee <- function(x, ...) {
-  'generalized estimating equations [GEE, @Liang86]' |> 
-    new(Class = 'md_lines', bibentry = bibentry(
-      bibtype = 'Article', key = 'Liang86',
-      author = 'Liang, Kung-Yee and Zeger, Scott L.',
-      title = 'Longitudinal data analysis using generalized linear models',
-      journal = 'Biometrika',
-      volume = '73',
-      number = '1',
-      pages = '13-22',
-      year = '1986',
-      month = '04',
-      doi = '10.1093/biomet/73.1.13'
-    ))
+  'generalized estimating equations [GEE, @LiangZeger86]' |> 
+    new(Class = 'md_lines', bibentry = .liang_zeger86())
 }
 
 
