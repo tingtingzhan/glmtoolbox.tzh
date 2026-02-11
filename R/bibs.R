@@ -1,14 +1,19 @@
 
 #' @title bibs in glmtoolbox.tzh package
 #' 
+#' @param key,... \link[utils]{bibentry}
+#' 
 #' @keywords internal
-#' @importFrom utils bibentry
+#' @importFrom utils bibentry person
 #' @name glmtoolbox_bib
 #' @export
-.liang_zeger86 <- \() {
+.liang_zeger86 <- \(key = 'LiangZeger86', ...) {
   bibentry(
-    bibtype = 'Article', key = 'LiangZeger86',
-    author = 'Liang, Kung-Yee and Zeger, Scott L.',
+    bibtype = 'Article', key = key, ...,
+    author = c(
+      person(family = 'Liang', given = 'Kung-Yee'), 
+      person(family = 'Zeger', given = c('Scott', 'L.'))
+    ),
     title = 'Longitudinal data analysis using generalized linear models',
     journal = 'Biometrika',
     volume = '73',

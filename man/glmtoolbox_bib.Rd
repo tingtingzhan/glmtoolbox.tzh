@@ -5,7 +5,10 @@
 \alias{.liang_zeger86}
 \title{bibs in glmtoolbox.tzh package}
 \usage{
-.liang_zeger86()
+.liang_zeger86(key = "LiangZeger86", ...)
+}
+\arguments{
+\item{key, ...}{\link[utils]{bibentry}}
 }
 \description{
 bibs in glmtoolbox.tzh package
