@@ -156,12 +156,9 @@ md_.backwardCriterion <- function(x, xnm, ...) {
     sprintf(fmt = 'Backward stepwise variable selection is performed by %s.') |>
     new(Class = 'md_lines')
   
-  z3 <- c(
-    '```{r}', 
-    xnm |> sprintf(fmt = 'as_flextable(%s)'),
-    '```'
-  ) |>
-    new(Class = 'md_lines')
+  z3 <- xnm |> 
+    sprintf(fmt = 'as_flextable(%s)') |>
+    new(Class = 'md_lines', chunk.r = TRUE)
   
   c(z1, z2, z3) # ?fastmd::c.md_lines
   
