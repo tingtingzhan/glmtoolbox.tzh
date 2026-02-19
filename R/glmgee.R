@@ -96,7 +96,7 @@ desc_.glmgee <- function(x, ...) {
 #' @examples
 #' library(ecip); list(
 #'  '`glmgee`' = glmgee(breaks ~ tension, id = wool, data = warpbreaks, corstr = 'exchangeable')
-#' ) |> fastmd::render2html(file = 'glmgee')
+#' ) |> fastmd::render2html()
 #' 
 #' @keywords internal
 #' @importFrom fastmd md_
