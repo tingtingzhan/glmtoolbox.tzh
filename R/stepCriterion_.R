@@ -139,26 +139,23 @@ as_flextable.backwardCriterion <- function(
 #' @param x,xnm,... ..
 #' 
 #' @keywords internal
-#' @importFrom fastmd md_
+#' @importFrom fastmd md_ md_flextable_
 #' @importClassesFrom fastmd md_lines
-#' @importFrom ecip .md_reg
+#' @importFrom ecip md_regression_
 #' @export md_.backwardCriterion
 #' @export
 md_.backwardCriterion <- function(x, xnm, ...) {
   
   z1 <- x |>
     attr(which = 'initial.fit', exact = TRUE) |>
-    .md_reg() |>
-    new(Class = 'md_lines')
+    md_regression_()
   
   z2 <- x |>
     textCriterion() |> 
     sprintf(fmt = 'Backward stepwise variable selection is performed by %s.') |>
     new(Class = 'md_lines')
   
-  z3 <- xnm |> 
-    sprintf(fmt = 'as_flextable(%s)') |>
-    new(Class = 'md_lines', chunk.r = TRUE)
+  z3 <- md_flextable_(xnm = xnm, ...)
   
   c(z1, z2, z3) # ?fastmd::c.md_lines
   
