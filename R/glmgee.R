@@ -6,6 +6,7 @@
 #' 
 #' @param ... S3 method dispatch holder
 #' 
+#' @keywords internal
 #' @export family.glmgee
 #' @export
 family.glmgee <- function(object, ...) object[['family']]
@@ -22,6 +23,11 @@ family.glmgee <- function(object, ...) object[['family']]
 #' @param level ..
 #' 
 #' @param ... ..
+#' 
+#' @examples
+#' library(ecip); list(
+#'  '`glmgee`' = glmgee(breaks ~ tension, id = wool, data = warpbreaks, corstr = 'exchangeable')
+#' ) |> fastmd::render2html()
 #' 
 #' @keywords internal
 #' @name glmgee_S3
@@ -89,19 +95,8 @@ desc_.glmgee <- function(x, ...) {
 
 
 
-#' @title R Markdown Lines for \link[glmtoolbox]{glmgee} Object
-#' 
-#' @param x,xnm,... ..
-#' 
-#' @examples
-#' library(ecip); list(
-#'  '`glmgee`' = glmgee(breaks ~ tension, id = wool, data = warpbreaks, corstr = 'exchangeable')
-#' ) |> fastmd::render2html()
-#' 
-#' @keywords internal
 #' @importFrom fastmd md_
 #' @importFrom ecip md_ecip
-#' @export md_.glmgee
 #' @export
 md_.glmgee <- md_ecip
 

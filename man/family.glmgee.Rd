@@ -14,3 +14,4 @@
 \description{
 \link[stats]{family} of \link[glmtoolbox]{glmgee} objects
 }
+\keyword{internal}

@@ -29,4 +29,10 @@
 \description{
 Auxiliary S3 method dispatch for \link[glmtoolbox]{glmgee} objects
 }
+\examples{
+library(ecip); list(
+ '`glmgee`' = glmgee(breaks ~ tension, id = wool, data = warpbreaks, corstr = 'exchangeable')
+) |> fastmd::render2html()
+
+}
 \keyword{internal}
