@@ -1,38 +1,25 @@
 
 
-#' @title \link[stats]{family} of \link[glmtoolbox]{glmgee} objects
-#' 
-#' @param object \link[glmtoolbox]{glmgee} object
-#' 
-#' @param ... S3 method dispatch holder
-#' 
-#' @keywords internal
-#' @export family.glmgee
-#' @export
-family.glmgee <- function(object, ...) object[['family']]
-
-
-
-
-
-
-#' @title Auxiliary S3 method dispatch for \link[glmtoolbox]{glmgee} objects
-#' 
-#' @param x \link[glmtoolbox]{glmgee} object
-#' 
-#' @param level ..
-#' 
-#' @param ... ..
+#' @title Fast Markdown Lines for \link[glmtoolbox]{glmgee}
 #' 
 #' @examples
 #' library(ecip); list(
 #'  '`glmgee`' = glmgee(breaks ~ tension, id = wool, data = warpbreaks, corstr = 'exchangeable')
 #' ) |> fastmd::render2html()
 #' 
-#' @keywords internal
-#' @name glmgee_S3
+#' @name glmgee
+NULL
+
+
+
+
+
+#' @export
+family.glmgee <- function(object, ...) object[['family']]
+
+
+
 #' @importFrom ecip coef_
-#' @export coef_.glmgee
 #' @export
 coef_.glmgee <- function(x) {
   # x$coefficients[, 1L] # drop rownames if ncol-1L
@@ -41,9 +28,7 @@ coef_.glmgee <- function(x) {
 }
 # do not overwrite ?glmtoolbox:::coef.glmgee
 
-#' @rdname glmgee_S3
 #' @importFrom ecip .pval
-#' @export .pval.glmgee
 #' @export
 .pval.glmgee <- function(x) {
   # see inside
@@ -55,9 +40,7 @@ coef_.glmgee <- function(x) {
 }
 
 
-#' @rdname glmgee_S3
 #' @importFrom ecip confint_
-#' @export confint_.glmgee
 #' @export
 confint_.glmgee <- function(x, level = .95, ...) {
   # ?glmtoolbox:::confint.glmgee
@@ -68,9 +51,7 @@ confint_.glmgee <- function(x, level = .95, ...) {
 
 
 
-#' @rdname glmgee_S3
 #' @importFrom ecip nobsText
-#' @export nobsText.glmgee
 #' @export
 nobsText.glmgee <- function(x) {
   sz <- x[['sizes']]
@@ -81,11 +62,9 @@ nobsText.glmgee <- function(x) {
 
 
 
-#' @rdname glmgee_S3
 #' @importFrom methods new
 #' @importClassesFrom fastmd md_lines
 #' @importFrom ecip desc_
-#' @export desc_.glmgee
 #' @export
 desc_.glmgee <- function(x, ...) {
   'generalized estimating equations [GEE, @LiangZeger86]' |> 
