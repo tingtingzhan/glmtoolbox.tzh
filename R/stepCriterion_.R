@@ -134,15 +134,9 @@ as_flextable.backwardCriterion <- function(
 
 
 
-#' @title R Markdown Lines for [backwardCriterion]
-#' 
-#' @param x,xnm,... ..
-#' 
-#' @keywords internal
 #' @importFrom fastmd md_ md_flextable_
 #' @importClassesFrom fastmd md_lines
 #' @importFrom ecip md_regression_
-#' @export md_.backwardCriterion
 #' @export
 md_.backwardCriterion <- function(x, xnm, ...) {
   
