@@ -4,12 +4,13 @@
 #' 
 #' @description ..
 #' 
-#' @param object ..
+#' @param object a \link[nlme]{groupedData}
 #' 
 #' @param ... ..
 #' 
 #' @examples 
 #' library(ggplot2)
+#' theme_set(theme_minimal())
 #' autoplot(Indometh)
 #' autoplot(Loblolly)
 #' autoplot(ChickWeight) # Chick and Diet already factor
@@ -20,8 +21,7 @@
 #' @export
 autoplot.groupedData <- function(object, ...) {
   ggplot() + 
-    autolayer.groupedData(object, ...) + 
-    labs(title = deparse1(substitute(object)))
+    autolayer.groupedData(object, ...)
 }
 
 

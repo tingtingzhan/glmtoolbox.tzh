@@ -7,7 +7,7 @@
 \method{autoplot}{groupedData}(object, ...)
 }
 \arguments{
-\item{object}{..}
+\item{object}{a \link[nlme]{groupedData}}
 
 \item{...}{..}
 }
@@ -16,6 +16,7 @@
 }
 \examples{
 library(ggplot2)
+theme_set(theme_minimal())
 autoplot(Indometh)
 autoplot(Loblolly)
 autoplot(ChickWeight) # Chick and Diet already factor
