@@ -56,16 +56,7 @@ textCriterion <- function(x) {
 
 
 
-#' @title Convert \link[glmtoolbox.tzh]{backwardCriterion} to \link[base]{matrix}
-#' 
-#' @param x returned object from function \link[glmtoolbox.tzh]{backwardCriterion}.
-#' 
-#' @param ... additional parameters, currently of no use
-#' 
-#' @keywords internal
-#' @importFrom ecip ecip as.matrix.ecip endpoint
 #' @method as.matrix backwardCriterion
-#' @export as.matrix.backwardCriterion
 #' @export
 as.matrix.backwardCriterion <- function(x, ...) {
   
@@ -79,8 +70,10 @@ as.matrix.backwardCriterion <- function(x, ...) {
     lapply(FUN = ecip)
   
   m <- list(
-    z[[1L]] |> as.matrix.ecip(type = 'p_only'), # `initial` model, only print p-values
-    z[[2L]] |> as.matrix.ecip(type = 'ncol1') # `final` model
+    z[[1L]] |> # `initial` model, only print p-values
+      as.matrix(type = 'p_only'), # ecip::as.matrix.ecip
+    z[[2L]] |> # `final` model
+      as.matrix(type = 'ncol1') # ecip::as.matrix.ecip
   )
   
   r <- m |>
@@ -105,15 +98,7 @@ as.matrix.backwardCriterion <- function(x, ...) {
 
 
 
-#' @title Convert \link[glmtoolbox.tzh]{backwardCriterion} to \link[flextable]{flextable}
-#' 
-#' @param x returned object from function \link[glmtoolbox.tzh]{backwardCriterion}.
-#' 
-#' @param ... additional parameters, currently of no use
-#' 
-#' @keywords internal
 #' @importFrom flextable as_flextable add_footer_lines color
-#' @export as_flextable.backwardCriterion
 #' @export
 as_flextable.backwardCriterion <- function(
     x, 
@@ -133,9 +118,6 @@ as_flextable.backwardCriterion <- function(
 
 
 
-#' @importFrom fastmd md_ md_flextable_
-#' @importClassesFrom fastmd md_lines
-#' @importFrom ecip md_regression_
 #' @export
 md_.backwardCriterion <- function(x, xnm, ...) {
   

@@ -1,5 +1,5 @@
 
-#' @title bibs in glmtoolbox.tzh package
+#' @title bibs in \pkg{ranef.tzh}
 #' 
 #' @param key,... \link[utils]{bibentry}
 #' 

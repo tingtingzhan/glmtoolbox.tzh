@@ -2,9 +2,9 @@
 % Please edit documentation in R/glmgee.R
 \name{glmgee}
 \alias{glmgee}
-\title{Fast Markdown Lines for \link[glmtoolbox]{glmgee}}
+\title{\link[glmtoolbox]{glmgee} Objects}
 \description{
-Fast Markdown Lines for \link[glmtoolbox]{glmgee}
+\link[glmtoolbox]{glmgee} Objects
 }
 \examples{
 library(ecip); list(

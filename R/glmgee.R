@@ -1,6 +1,6 @@
 
 
-#' @title Fast Markdown Lines for \link[glmtoolbox]{glmgee}
+#' @title \link[glmtoolbox]{glmgee} Objects
 #' 
 #' @examples
 #' library(ecip); list(
@@ -19,7 +19,6 @@ family.glmgee <- function(object, ...) object[['family']]
 
 
 
-#' @importFrom ecip coef_
 #' @export
 coef_.glmgee <- function(x) {
   # x$coefficients[, 1L] # drop rownames if ncol-1L
@@ -28,7 +27,7 @@ coef_.glmgee <- function(x) {
 }
 # do not overwrite ?glmtoolbox:::coef.glmgee
 
-#' @importFrom ecip .pval
+
 #' @export
 .pval.glmgee <- function(x) {
   # see inside
@@ -40,7 +39,6 @@ coef_.glmgee <- function(x) {
 }
 
 
-#' @importFrom ecip confint_
 #' @export
 confint_.glmgee <- function(x, level = .95, ...) {
   # ?glmtoolbox:::confint.glmgee
@@ -51,7 +49,6 @@ confint_.glmgee <- function(x, level = .95, ...) {
 
 
 
-#' @importFrom ecip nobsText
 #' @export
 nobsText.glmgee <- function(x) {
   sz <- x[['sizes']]
@@ -62,9 +59,6 @@ nobsText.glmgee <- function(x) {
 
 
 
-#' @importFrom methods new
-#' @importClassesFrom fastmd md_lines
-#' @importFrom ecip desc_
 #' @export
 desc_.glmgee <- function(x, ...) {
   'generalized estimating equations [GEE, @LiangZeger86]' |> 
@@ -74,8 +68,6 @@ desc_.glmgee <- function(x, ...) {
 
 
 
-#' @importFrom fastmd md_
-#' @importFrom ecip md_ecip
 #' @export
 md_.glmgee <- md_ecip
 

@@ -3,7 +3,7 @@
 \name{glmtoolbox_bib}
 \alias{glmtoolbox_bib}
 \alias{.liang_zeger86}
-\title{bibs in glmtoolbox.tzh package}
+\title{bibs in \pkg{ranef.tzh}}
 \usage{
 .liang_zeger86(key = "LiangZeger86", ...)
 }
@@ -11,6 +11,6 @@
 \item{key, ...}{\link[utils]{bibentry}}
 }
 \description{
-bibs in glmtoolbox.tzh package
+bibs in \pkg{ranef.tzh}
 }
 \keyword{internal}

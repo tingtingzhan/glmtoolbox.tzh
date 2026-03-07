@@ -1,9 +1,9 @@
-Package: glmtoolbox.tzh
+Package: ranef.tzh
 Type: Package
-Title: glmtoolbox.tzh
+Title: ranef.tzh
 Version: 0.1.0
 Date: 2025-04-28
-Description: Need to think more..
+Description: Tingting's extension of the packages 'nlme', 'lme4', 'glmtoolbox'.
 Authors@R: c(person(given = 'Tingting', family = 'Zhan',
       role = c('aut', 'cre'), email =
       'tingtingzhan@gmail.com', comment = c(ORCID =
@@ -14,4 +14,11 @@ RoxygenNote: 7.3.3
 Encoding: UTF-8
 License: GPL-2
 Depends: R (>= 4.5), glmtoolbox (== 0.1.12)
-Imports: methods, flextable (== 0.9.11), fastmd, ecip
+Imports: methods, 
+    ggplot2 (== 4.0.2), 
+    lme4 (== 2.0.1), 
+    nlme (== 3.1.168), 
+    flextable (== 0.9.11), 
+    rlang (== 1.1.7),
+    fastmd, ecip
+Suggests: robustlmm (== 3.4.2), HSAUR3 (== 1.0.15)
