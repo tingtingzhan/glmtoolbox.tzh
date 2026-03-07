@@ -113,7 +113,6 @@ as.matrix.backwardCriterion <- function(x, ...) {
 #' 
 #' @keywords internal
 #' @importFrom flextable as_flextable add_footer_lines color
-#' @importFrom fastmd as_flextable.matrix
 #' @export as_flextable.backwardCriterion
 #' @export
 as_flextable.backwardCriterion <- function(
@@ -123,7 +122,7 @@ as_flextable.backwardCriterion <- function(
 ) {
   z <- as.matrix.backwardCriterion(x, ...)
   z |>
-    as_flextable.matrix(
+    as_flextable( # fastmd:::as_flextable.matrix
       row.title = row.title,
     ) |>
     color(j = 2L, color = 'grey60', part = 'all') |>
