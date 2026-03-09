@@ -4,14 +4,28 @@
 #' @param model,trace,... parameters of function \link[glmtoolbox]{stepCriterion},
 #' **other than `direction`**
 #' 
+#' @examples
+#' library(glmtoolbox)
+#' # ?stepCriterion
+#' data(depression)
+#' m = glmgee(depressd ~ visit * group, id=subj, family=binomial(probit), 
+#'  corstr="AR-M-dependent", data=depression)
+#' list(
+#'  'back' = m |> 
+#'    backwardCriterion()
+#' ) |> fastmd::render2html()
+#' 
 #' @keywords internal
 #' @importFrom glmtoolbox stepCriterion
 #' @export
 backwardCriterion <- function(model, trace = FALSE, ...) {
   ret <- model |>
     stepCriterion(direction = 'backward', trace = trace, ...)
+  # glmtoolbox:::stepCriterion.glmgee
+  # does not keep a lot of tuning parameters :(
   attr(ret, which = 'initial.fit') <- model
-  class(ret) <- 'backwardCriterion'
+  class(ret) <- c('backwardCriterion', class(ret)) |>
+    unique.default()
   return(ret)
 }
 
@@ -29,7 +43,8 @@ textCriterion <- function(x) {
     # ?glmtoolbox:::stepCriterion.glmgee
     'P(Chisq>)(*)' = {
       # `criterion = 'p-value'`
-      '$p$-values of selected predictors'
+      # '$p>.05$'
+      '\\$p>.05\\$'
     }, 
     QIC = {
       # `criterion = 'qic'`
@@ -99,6 +114,7 @@ as.matrix.backwardCriterion <- function(x, ...) {
 
 
 #' @importFrom flextable as_flextable add_footer_lines color
+#' @importFrom ftExtra as_paragraph_md colformat_md 
 #' @export
 as_flextable.backwardCriterion <- function(
     x, 
@@ -112,10 +128,19 @@ as_flextable.backwardCriterion <- function(
     ) |>
     color(j = 2L, color = 'grey60', part = 'all') |>
     add_footer_lines(values = c(
-      x |> textCriterion() |> sprintf(fmt = '\u274c: predictor(s) removed by %s')
-    ))
+      x |> 
+        textCriterion() |> 
+        sprintf(fmt = '\u274c: predictor(s) removed by %s') #|>
+        #as_paragraph_md()
+    )) #|>
+    #colformat_md(part = 'all') # why does not work??
+
 }
 
+
+if (FALSE) {
+  '$p>.3$' |> ftExtra::as_paragraph_md() # error
+}
 
 
 #' @export

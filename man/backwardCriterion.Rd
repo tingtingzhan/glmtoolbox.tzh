@@ -13,4 +13,16 @@ backwardCriterion(model, trace = FALSE, ...)
 \description{
 \link{backwardCriterion}
 }
+\examples{
+library(glmtoolbox)
+# ?stepCriterion
+data(depression)
+m = glmgee(depressd ~ visit * group, id=subj, family=binomial(probit), 
+ corstr="AR-M-dependent", data=depression)
+list(
+ 'back' = m |> 
+   backwardCriterion()
+) |> fastmd::render2html()
+
+}
 \keyword{internal}

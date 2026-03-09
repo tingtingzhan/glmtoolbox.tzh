@@ -18,7 +18,7 @@ Imports: methods,
     ggplot2 (== 4.0.2), 
     lme4 (== 2.0.1), 
     nlme (== 3.1.168), 
-    flextable (== 0.9.11), 
+    flextable (== 0.9.11), ftExtra (== 0.6.4),
     rlang (== 1.1.7),
     fastmd, ecip
 Suggests: robustlmm (== 3.4.2), HSAUR3 (== 1.0.15)
