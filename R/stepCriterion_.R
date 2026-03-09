@@ -43,8 +43,7 @@ textCriterion <- function(x) {
     # ?glmtoolbox:::stepCriterion.glmgee
     'P(Chisq>)(*)' = {
       # `criterion = 'p-value'`
-      # '$p>.05$'
-      '\\$p>.05\\$'
+      '$p>.05$'
     }, 
     QIC = {
       # `criterion = 'qic'`
