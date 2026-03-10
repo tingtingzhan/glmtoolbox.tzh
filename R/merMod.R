@@ -64,7 +64,11 @@ vterms.merMod <- function(x) {
 
 
 #' @export
-desc_.glmerMod <- function(x) 'generalized linear mixed regression'
+desc_.glmerMod <- function(x) {
+  'generalized linear mixed regression' |>
+    sprintf(fmt = '*%s*') |>
+    new(Class = 'md_lines', package = 'lme4')
+}
 
 #' @importFrom lme4 methTitle
 #' @export
@@ -73,7 +77,9 @@ desc_.merMod <- function(x) {
   x@devcomp$dims |> 
     methTitle() |> # lme4::methTitle
     gsub(pattern = ' fit by .*$', replacement = '') |> 
-    tolower()
+    tolower() |>
+    sprintf(fmt = '*%s*') |>
+    new(Class = 'md_lines', package = 'lme4')
 }
 
 

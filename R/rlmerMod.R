@@ -27,7 +27,9 @@ NULL
 desc_.rlmerMod <- function(x) {
   # ?robustlmm:::print.rlmerMod
   # ?robustlmm:::.methTitle
-  'robust linear mixed'
+  'robust linear mixed' |>
+    sprintf(fmt = '*%s*') |>
+    new(Class = 'md_lines', package = 'robustlmm')
 }
 
 # ?robustlmm:::coef.rlmerMod not what I want

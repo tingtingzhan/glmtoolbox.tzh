@@ -53,10 +53,20 @@ confint_.intervals.gls <- function(x, ...) {
 
 
 #' @export
-desc_.lme <- function(x) 'linear mixed effects' # from ?nlme:::print.lme
-#' @export
-desc_.gls <- function(x) 'generalized (weighted) least squares' # from ?nlme:::print.gls
+desc_.lme <- function(x) {
+  # from ?nlme:::print.lme
+  'linear mixed effects model' |>
+    sprintf(fmt = '*%s*') |>
+    new(Class = 'md_lines', package = 'nlme')
+}
 
+#' @export
+desc_.gls <- function(x) {
+  # from ?nlme:::print.gls
+  'generalized (weighted) least squares fit' |>
+    sprintf(fmt = '*%s*') |>
+    new(Class = 'md_lines', package = 'nlme')
+}
 
 
 

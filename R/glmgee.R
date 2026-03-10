@@ -62,7 +62,8 @@ nobsText.glmgee <- function(x) {
 #' @export
 desc_.glmgee <- function(x, ...) {
   'generalized estimating equations [GEE, @LiangZeger86]' |> 
-    new(Class = 'md_lines', bibentry = .liang_zeger86())
+    sprintf(fmt = '*%s*') |>
+    new(Class = 'md_lines', package = 'glmtoolbox', bibentry = .liang_zeger86())
 }
 
 
