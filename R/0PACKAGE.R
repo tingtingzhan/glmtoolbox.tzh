@@ -12,7 +12,7 @@
 #' 
 #' @importFrom ecip coef_ confint_ dataClasses desc_ endpoint nobsText .pval vterms
 #' @importFrom ecip ecip md_ecip md_regression_
-#' @importFrom fastmd md_ md_flextable_
+#' @importFrom fastmd md_ md_int
 #' @importClassesFrom fastmd md_lines
 #' 
 '_PACKAGE'
