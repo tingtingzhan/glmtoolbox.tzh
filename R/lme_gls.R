@@ -106,10 +106,6 @@ nobsText.gls <- function(x) {
 }
 
 
-
-
-
-
 # @note
 # The `S3` generic \link[stats]{model.frame} is critical 
 # for the function \link[stats]{.getXlevels}.
@@ -141,8 +137,6 @@ model.frame.gls <- model.frame.lme
 
 
 
-
-
 # @note
 # We already have `nlme:::coef.lme`
 # [coef_.lme()] is actually `nlme:::fixef.lme`.
@@ -150,8 +144,6 @@ model.frame.gls <- model.frame.lme
 coef_.lme <- function(x) x$coefficients$fixed
 
 # ?nlme:::coef.gls is fine
-
-
 
 
 #' @export
